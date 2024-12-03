@@ -6,10 +6,10 @@ import random
 from datetime import datetime, timedelta
 
 MAIN_CATEGORY = {
-    "영상/음향가전": 1,
-    "생활/미용/욕실가전": 2,
-    "주방가전": 3,
-    "계절가전": 4,
+    "영상/음향가전": 26,
+    "생활/미용/욕실가전": 27,
+    "주방가전": 28,
+    "계절가전": 29,
 }
 
 # MySQL 데이터베이스 연결 설정
@@ -51,7 +51,7 @@ def insert_review_data(json_file_path):
             price = random.randint(100000, 5000000)
 
             cursor.execute(
-                "INSERT INTO products (name, main_category_id, photo, manufacturer, release_year, energy_efficiency, power_consumption, weight, price) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)",
+                "INSERT INTO products (name, sub_category_id, photo, manufacturer, release_year, energy_efficiency, power_consumption, weight, price) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)",
                 (product_name, MAIN_CATEGORY[main_category], photo, manufacturer, release_year, energy_efficiency, power_consumption, weight, price)
             )
             product_id = cursor.lastrowid
